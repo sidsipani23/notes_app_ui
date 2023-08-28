@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { RootState } from './store';
 export const mainSlice = createSlice({
 	name: 'main',
 	initialState: {

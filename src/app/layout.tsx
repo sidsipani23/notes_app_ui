@@ -10,10 +10,11 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Button from '@mui/material/Button';
 import { store } from './store';
 import { Provider } from 'react-redux';
-import { useTheme, ThemeProvider, createTheme } from '@mui/material/styles';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import IconButton from '@mui/material/IconButton';
+import { useRouter } from 'next/navigation';
 
 export const metadata: Metadata = {
 	title: 'Notes',
@@ -25,8 +26,8 @@ export default function RootLayout({
 }: {
 	children: React.ReactNode;
 }) {
+	const router = useRouter();
 	const [mode, setMode] = React.useState<'light' | 'dark'>('dark');
-
 	const colorMode = React.useMemo(
 		() => ({
 			toggleColorMode: () => {
@@ -50,7 +51,7 @@ export default function RootLayout({
 				<Provider store={store}>
 					<ThemeProvider theme={theme}>
 						<CssBaseline />
-						<AppBar position='fixed'>
+						<AppBar position='static'>
 							<Container maxWidth='xl'>
 								<Toolbar disableGutters style={{ display: 'flex' }}>
 									{/* Desktop View below*/}
@@ -77,7 +78,8 @@ export default function RootLayout({
 											mr: '1rem',
 										}}
 										variant='outlined'
-										color='inherit'>
+										color='inherit'
+										onClick={() => router.push('/login')}>
 										Login
 									</Button>
 									<Button
@@ -85,7 +87,8 @@ export default function RootLayout({
 											display: { xs: 'none', md: 'flex' },
 										}}
 										variant='outlined'
-										color='inherit'>
+										color='inherit'
+										onClick={() => router.push('/register')}>
 										SignUp
 									</Button>
 
@@ -137,7 +140,8 @@ export default function RootLayout({
 											mr: '0.5rem',
 										}}
 										variant='outlined'
-										color='inherit'>
+										color='inherit'
+										onClick={() => router.push('/login')}>
 										Login
 									</Button>
 									<Button
@@ -145,7 +149,8 @@ export default function RootLayout({
 											display: { xs: 'flex', md: 'none' },
 										}}
 										variant='outlined'
-										color='inherit'>
+										color='inherit'
+										onClick={() => router.push('/register')}>
 										SignUp
 									</Button>
 								</Toolbar>

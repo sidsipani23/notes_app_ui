@@ -1,0 +1,10 @@
+.containerCustom {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 85vh;
+}
+
+.inputField {
+	min-width: 20rem;
+}
